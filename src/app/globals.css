@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
+@import "@fontsource/zilla-slab/500.css";
+@import "@fontsource/zilla-slab/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+/*
+  Design direction: a mailroom / outreach ledger. The product's job is
+  sending and tracking outbound mail, so the UI borrows from postal
+  manifests and postmarks rather than a generic SaaS dashboard: parchment
+  ledger surface, slab-serif "stamped" headers, monospace data columns,
+  and circular postmark badges on the send log (see SendLogTable).
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #e7e4da;
+  --paper-raised: #f3f1e9;
+  --ink: #1e2a2e;
+  --ink-soft: #4d5a58;
+  --teal: #2c6e62;
+  --teal-deep: #1f4f47;
+  --rust: #b0472e;
+  --status-sent: #3f7d5c;
+  --status-failed: #b0472e;
+  --line: #c9c4b6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-rust: var(--rust);
+  --color-status-sent: var(--status-sent);
+  --color-status-failed: var(--status-failed);
+  --color-line: var(--line);
+  --font-display: "Zilla Slab", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--paper);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

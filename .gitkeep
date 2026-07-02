@@ -1,0 +1,3 @@
+This directory holds the runtime JSON data store (influencers.json,
+brand-account.json, outreach-logs.json). Files are created automatically on
+first run and are gitignored — see src/lib/store.ts.
